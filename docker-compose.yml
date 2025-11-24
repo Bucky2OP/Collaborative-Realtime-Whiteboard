@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  server:
+    build: ./server-go
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  client:
+    build: ./client-react
+    ports:
+      - "3000:80"
+    depends_on:
+      - server
+    restart: unless-stopped
